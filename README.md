@@ -45,3 +45,5 @@ Press the "Smile" button and then watch as your candy gets dispensed and deliver
 
 
 ![Candy Bot](art/candy_bot2.jpg)
+
+Vectors (images) in this example app were found from http://www.vecteezy.com/

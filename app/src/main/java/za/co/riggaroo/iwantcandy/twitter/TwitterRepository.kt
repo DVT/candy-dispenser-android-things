@@ -54,7 +54,7 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
         return TWEET_TEXT[randomNumber]
     }
 
-    internal fun uploadTweet(session: TwitterSession, text: String, imageUri: File?) {
+    private fun uploadTweet(session: TwitterSession, text: String, imageUri: File?) {
         if (imageUri != null) {
             uploadMedia(session, imageUri, object : Callback<Media>() {
                 override fun success(result: Result<Media>) {
@@ -104,7 +104,7 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
     private val TAG: String? = "TwitterRepo"
 
     private fun fail(e: TwitterException) {
-        //   sendFailureBroadcast(intent)
+        sendFailureBroadcast(e)
         Log.e(TAG, "Post Tweet failed", e)
 
     }

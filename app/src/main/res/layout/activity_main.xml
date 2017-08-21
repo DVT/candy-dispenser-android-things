@@ -80,6 +80,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button_activate_candy"
         app:layout_constraintEnd_toEndOf="@+id/button_activate_candy"
         app:layout_constraintStart_toStartOf="@+id/button_activate_candy" />
