@@ -42,5 +42,5 @@ You can get all of these by signing up for Twitter API here - https://dev.twitte
 Run the application on your Android Things device. 
 Press the "Smile" button and then watch as your candy gets dispensed and delivered to you.
 
-![Candy Bot](candy_bot1.jpg)
-![Candy Bot](candy_bot2.jpg)
+![Candy Bot](art/candy_bot1.jpg)
+![Candy Bot](art/candy_bot2.jpg)
