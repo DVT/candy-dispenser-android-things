@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">I want Candy</string>
+    <string name="smile">SMILE</string>
+    <string name="instructions">Take a silly photo, Get Candy. #TheCandyBot</string>
+    <string name="error_not_smiling">You aren\'t smiling!</string>
+    <string name="error_no_faces_detected">No faces detected</string>
+    <string name="error_face_detector_not_operational">Face detector not operational. Please wait while it downloads (it could take a while)</string>
+    <string name="success_dispensing_candy">Dispensing Candy...</string>
+</resources>
