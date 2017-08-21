@@ -1,6 +1,7 @@
 # Android Things Candy Bot
 
 A candy dispenser that waits for you to smile then dispenses candy and posts pictures to [@TheCandyBot](https://twitter.com/TheCandyBot) on Twitter.
+![Candy Bot](art/candy_bot1.jpg)
 
 Largely inspired by the [AI Candy dispenser](https://github.com/alvarowolfx/ai-candy-dispenser)
 
@@ -42,5 +43,5 @@ You can get all of these by signing up for Twitter API here - https://dev.twitte
 Run the application on your Android Things device. 
 Press the "Smile" button and then watch as your candy gets dispensed and delivered to you.
 
-![Candy Bot](art/candy_bot1.jpg)
+
 ![Candy Bot](art/candy_bot2.jpg)
