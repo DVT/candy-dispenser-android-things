@@ -10,9 +10,9 @@ import com.google.android.things.pio.PeripheralManagerService
  * @author rebeccafranks
  * @since 2017/07/08.
  */
-class CandyMachine(gpio: String) : AutoCloseable {
+class CandyMachineActuator(gpio: String) : AutoCloseable {
 
-    private val TAG: String? = "CandyMachine"
+    private val TAG: String? = "CandyMachineActuator"
     private val CANDY_DISPENSING_DURATION_MILLIS = 2000L
     private var candyGpioPin: Gpio? = null
     private var mCandiesTimer: CountDownTimer? = null

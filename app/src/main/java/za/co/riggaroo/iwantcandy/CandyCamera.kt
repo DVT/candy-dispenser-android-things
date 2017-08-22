@@ -21,11 +21,10 @@ class CandyCamera : AutoCloseable {
     private var mCaptureSession: CameraCaptureSession? = null
 
     companion object InstanceHolder {
-        // Camera image parameters (device-specific)
         val IMAGE_WIDTH = 640
         val IMAGE_HEIGHT = 480
         val MAX_IMAGES = 1
-        val mCamera = CandyCamera()
+        private val mCamera = CandyCamera()
 
         fun getInstance(): CandyCamera {
             return InstanceHolder.mCamera
@@ -46,11 +45,9 @@ class CandyCamera : AutoCloseable {
         }
 
         val id = camIds[0]
-        // Initialize image processor
         mImageReader = ImageReader.newInstance(IMAGE_WIDTH, IMAGE_HEIGHT,
                 ImageFormat.JPEG, MAX_IMAGES)
         mImageReader?.setOnImageAvailableListener(imageListener, backgroundHandler)
-        // Open the camera resource
         try {
             manager.openCamera(id, mStateCallback, backgroundHandler)
         } catch (cae: Exception) {
@@ -129,39 +126,5 @@ class CandyCamera : AutoCloseable {
 
     override fun close() {
         mCameraDevice?.close()
-    }
-
-    fun dumpFormatInfo(context: Context) {
-        val manager = context.getSystemService(CAMERA_SERVICE) as CameraManager
-        var camIds = arrayOf<String>()
-        try {
-            camIds = manager.cameraIdList
-        } catch (e: CameraAccessException) {
-            Log.d(TAG, "Cam access exception getting IDs")
-        }
-
-        if (camIds.size < 1) {
-            Log.d(TAG, "No cameras found")
-        }
-        val id = camIds[0]
-        Log.d(TAG, "Using camera id " + id)
-        try {
-            val characteristics = manager.getCameraCharacteristics(id)
-            val configs = characteristics.get(
-                    CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
-            for (format in configs!!.outputFormats) {
-                Log.d(TAG, "Getting sizes for format: " + format)
-                for (s in configs.getOutputSizes(format)) {
-                    Log.d(TAG, "\t" + s.toString())
-                }
-            }
-            val effects = characteristics.get(CameraCharacteristics.CONTROL_AVAILABLE_EFFECTS)
-            for (effect in effects!!) {
-                Log.d(TAG, "Effect available: " + effect)
-            }
-        } catch (e: CameraAccessException) {
-            Log.d(TAG, "Cam access exception getting characteristics.")
-        }
-
     }
 }

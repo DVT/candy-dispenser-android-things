@@ -1,4 +1,4 @@
-package za.co.riggaroo.iwantcandy.twitter
+package za.co.riggaroo.iwantcandy
 
 import android.annotation.TargetApi
 import android.content.ContentResolver

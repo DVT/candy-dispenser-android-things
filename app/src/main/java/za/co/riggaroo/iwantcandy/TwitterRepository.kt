@@ -1,4 +1,4 @@
-package za.co.riggaroo.iwantcandy.twitter
+package za.co.riggaroo.iwantcandy
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -8,7 +8,6 @@ import com.twitter.sdk.android.core.models.Media
 import com.twitter.sdk.android.core.models.Tweet
 import okhttp3.MediaType
 import okhttp3.RequestBody
-import za.co.riggaroo.iwantcandy.BuildConfig
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -19,15 +18,7 @@ import java.util.*
  * @author rebeccafranks
  * @since 2017/08/18.
  */
-class TwitterRepository(private val dependencyProvider: DependencyProvider, private val context: Context) {
-
-    private val TWEET_TEXT = arrayOf(
-            "I just got some candy from #TheCandyBot",
-            "I smiled for 4 pieces of candy #OhWow #TheCandyBot",
-            "Did someone say candy? #TheCandyBot",
-            "Smiling for Candy #TheCandyBot",
-            "Sugar Rush - free candy #TheCandyBot")
-
+class TwitterRepository(private val dependencyProvider: DependencyProvider, private val context: Context, private val tweetTextOptions: Array<String>) {
 
     fun sendTweet(photo: Bitmap) {
         val authToken = TwitterAuthToken(BuildConfig.TWITTER_API_TOKEN, BuildConfig.TWITTER_API_SECRET)
@@ -50,8 +41,8 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
     }
 
     private fun getRandomTweetText(): String {
-        val randomNumber = Random().nextInt(TWEET_TEXT.size)
-        return TWEET_TEXT[randomNumber]
+        val randomNumber = Random().nextInt(tweetTextOptions.size)
+        return tweetTextOptions[randomNumber]
     }
 
     private fun uploadTweet(session: TwitterSession, text: String, imageUri: File?) {
@@ -89,7 +80,7 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
     }
 
     private fun sendSuccessBroadcast(id: Long) {
-
+        //TODO inform user of success
     }
 
     private fun uploadMedia(session: TwitterSession, file: File, callback: Callback<Media>) {
@@ -110,7 +101,7 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
     }
 
     private fun sendFailureBroadcast(intent: Any) {
-
+        //TODO inform user of failure
     }
 
     class DependencyProvider {

@@ -5,5 +5,14 @@
     <string name="error_not_smiling">You aren\'t smiling!</string>
     <string name="error_no_faces_detected">No faces detected</string>
     <string name="error_face_detector_not_operational">Face detector not operational. Please wait while it downloads (it could take a while)</string>
-    <string name="success_dispensing_candy">Dispensing Candy...</string>
+    <string name="success_dispensing_candy">Dispensing Candy…</string>
+
+    <string-array name="tweet_text">
+        <item>I just got some candy from #TheCandyBot</item>
+        <item>I smiled for 4 pieces of candy #OhWow #TheCandyBot</item>
+        <item>Did someone say candy? #TheCandyBot</item>
+        <item>Smiling for Candy #TheCandyBot</item>
+        <item>Sugar Rush - free candy #TheCandyBot</item>
+    </string-array>
+
 </resources>
