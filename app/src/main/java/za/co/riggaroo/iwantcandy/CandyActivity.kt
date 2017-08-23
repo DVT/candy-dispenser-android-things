@@ -20,14 +20,12 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
 class CandyActivity : Activity(), CandyContract.CandyView {
 
-
     private val TAG: String = "CandyActivity"
     private lateinit var photoImageView: ImageView
     private lateinit var photoOverlay: Bitmap
     private lateinit var progressBarLoading: ProgressBar
     private lateinit var errorTextView: TextView
     private lateinit var candyPresenter: CandyPresenter
-
 
     private var candyMachine: CandyMachineActuator? = null
     private lateinit var camera: CandyCamera
@@ -149,5 +147,13 @@ class CandyActivity : Activity(), CandyContract.CandyView {
         super.onDestroy()
         candyMachine?.close()
         camera.close()
+    }
+
+    override fun showTweetPosted() {
+        Log.d(TAG, getString(R.string.tweet_posted_success)) //TODO Change to toast or snackbar when they work on AT
+    }
+
+    override fun showTweetError(exception: Exception) {
+        Log.e(TAG, getString(R.string.tweet_failed) + exception.message)
     }
 }

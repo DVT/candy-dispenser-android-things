@@ -6,6 +6,8 @@
     <string name="error_no_faces_detected">No faces detected</string>
     <string name="error_face_detector_not_operational">Face detector not operational. Please wait while it downloads (it could take a while)</string>
     <string name="success_dispensing_candy">Dispensing Candy…</string>
+    <string name="tweet_posted_success">Tweet successfully posted!</string>
+    <string name="tweet_failed">Tweet failed to post.</string>
 
     <string-array name="tweet_text">
         <item>I just got some candy from #TheCandyBot</item>

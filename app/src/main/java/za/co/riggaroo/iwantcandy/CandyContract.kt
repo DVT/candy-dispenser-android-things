@@ -20,6 +20,8 @@ interface CandyContract {
         fun showImage(overlayedBitmap: Bitmap)
         fun dispenseCandy()
         fun triggerCamera()
+        fun showTweetPosted()
+        fun showTweetError(exception: Exception)
     }
 
     interface CandyPresenter {

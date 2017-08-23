@@ -20,7 +20,9 @@ import java.util.*
  */
 class TwitterRepository(private val dependencyProvider: DependencyProvider, private val context: Context, private val tweetTextOptions: Array<String>) {
 
-    fun sendTweet(photo: Bitmap) {
+    private val TAG: String? = "TwitterRepo"
+
+    fun sendTweet(photo: Bitmap, callback: TweetCallback) {
         val authToken = TwitterAuthToken(BuildConfig.TWITTER_API_TOKEN, BuildConfig.TWITTER_API_SECRET)
         val twitterSession = TwitterSession(authToken, BuildConfig.TWITTER_USER_ID, BuildConfig.TWITTER_USERNAME)
 
@@ -36,7 +38,7 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
         fos.write(bitmapdata)
         fos.flush()
         fos.close()
-        uploadTweet(twitterSession, getRandomTweetText(), file)
+        uploadTweet(twitterSession, getRandomTweetText(), file, callback)
 
     }
 
@@ -45,43 +47,38 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
         return tweetTextOptions[randomNumber]
     }
 
-    private fun uploadTweet(session: TwitterSession, text: String, imageUri: File?) {
-        if (imageUri != null) {
-            uploadMedia(session, imageUri, object : Callback<Media>() {
-                override fun success(result: Result<Media>) {
-                    uploadTweetWithMedia(session, text, result.data.mediaIdString)
-                }
+    private fun uploadTweet(session: TwitterSession, text: String, imageUri: File, callback: TweetCallback) {
 
-                override fun failure(exception: TwitterException) {
-                    fail(exception)
-                }
+        uploadMedia(session, imageUri, object : Callback<Media>() {
+            override fun success(result: Result<Media>) {
+                uploadTweetWithMedia(session, text, result.data.mediaIdString, callback)
+            }
 
-            })
-        } else {
-            uploadTweetWithMedia(session, text, null)
-        }
+            override fun failure(exception: TwitterException) {
+                callback.onError(exception)
+            }
+
+        })
     }
 
-    internal fun uploadTweetWithMedia(session: TwitterSession, text: String, mediaId: String?) {
+    internal fun uploadTweetWithMedia(session: TwitterSession, text: String, mediaId: String?, callback: TweetCallback) {
         val client = dependencyProvider.getTwitterApiClient(session)
 
         client.statusesService.update(text, null, null, null, null, null, null, true, mediaId)
                 .enqueue(
                         object : Callback<Tweet>() {
                             override fun success(result: Result<Tweet>) {
-                                sendSuccessBroadcast(result.data.getId())
-
+                                callback.onSuccess()
+                                Log.d(TAG, "Post tweet successful")
                             }
 
                             override fun failure(exception: TwitterException) {
-                                fail(exception)
+                                callback.onError(exception)
+                                Log.e(TAG, "Post Tweet failed", exception)
                             }
                         })
     }
 
-    private fun sendSuccessBroadcast(id: Long) {
-        //TODO inform user of success
-    }
 
     private fun uploadMedia(session: TwitterSession, file: File, callback: Callback<Media>) {
         val client = dependencyProvider.getTwitterApiClient(session)
@@ -92,22 +89,16 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
         client.mediaService.upload(media, null, null).enqueue(callback)
     }
 
-    private val TAG: String? = "TwitterRepo"
-
-    private fun fail(e: TwitterException) {
-        sendFailureBroadcast(e)
-        Log.e(TAG, "Post Tweet failed", e)
-
-    }
-
-    private fun sendFailureBroadcast(intent: Any) {
-        //TODO inform user of failure
-    }
 
     class DependencyProvider {
 
         fun getTwitterApiClient(session: TwitterSession): TwitterApiClient {
             return TwitterCore.getInstance().getApiClient(session)
         }
+    }
+
+    interface TweetCallback {
+        fun onSuccess()
+        fun onError(exception: Exception)
     }
 }
