@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">I want Candy</string>
-    <string name="smile">SMILE</string>
-    <string name="instructions">Take a silly photo, Get Candy. #TheCandyBot</string>
+    <string name="smile">TAKE PHOTO</string>
+    <string name="instructions">SMILE, Get Candy. #DVTRefresh</string>
     <string name="error_not_smiling">You aren\'t smiling!</string>
     <string name="error_no_faces_detected">No faces detected</string>
     <string name="error_face_detector_not_operational">Face detector not operational. Please wait while it downloads (it could take a while)</string>
@@ -10,11 +10,14 @@
     <string name="tweet_failed">Tweet failed to post.</string>
 
     <string-array name="tweet_text">
-        <item>I just got some candy from #TheCandyBot</item>
-        <item>I smiled for 4 pieces of candy #OhWow #TheCandyBot</item>
-        <item>Did someone say candy? #TheCandyBot</item>
-        <item>Smiling for Candy #TheCandyBot</item>
-        <item>Sugar Rush - free candy #TheCandyBot</item>
+        <item>#DVTvalue Make an impact - a positive impact to our customers' success, our team &amp; in our communities - #DVTRefresh 📈</item>
+        <item>#DVTvalue Servant leadership -  Leadership at DVT is more coaching, than telling people what to do. #DVTRefresh </item>
+        <item>#DVTvalue Safe to fail – quick to grow and learn. Sometimes we mess up, but we learn fast. We value learning, not failing. #DVTRefresh</item>
+        <item>#DVTvalue Work-life balance - Life is about balance. At DVT we work hard so that we have time for fun. At work and at home. #DVTRefresh 🏖💻</item>
+        <item>#DVTvalue Own it – do it. No one likes to nag. At DVT, when you commit to your team to get stuff done, then you get it done. #DVTRefresh</item>
+        <!--  <item>#DVTvalue Do the right thing. Honesty, respect &amp; integrity towards our colleagues, clients &amp; community, is the right thing to do. #DVTRefresh</item>
+        -->
+        <item>#DVTvalue Simplicity - The art of achieving maximum results with minimum effort. We work hard and like to achieve a lot, quickly. #DVTRefresh 🎓</item>
     </string-array>
 
 </resources>

@@ -2,7 +2,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:colorPrimary">#e62bad</item>
+        <item name="android:colorPrimary">#0066B2</item>
         <item name="android:colorAccent">#e62bad</item>
         <item name="android:windowBackground">@color/colorPrimary</item>
     </style>
