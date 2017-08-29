@@ -16,10 +16,11 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import com.google.android.gms.vision.face.FaceDetector
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
-import za.co.riggaroo.iwantcandy.*
+import za.co.riggaroo.iwantcandy.R
 import za.co.riggaroo.iwantcandy.repo.TwitterRepository
 import za.co.riggaroo.iwantcandy.ui.components.CandyCamera
 import za.co.riggaroo.iwantcandy.ui.components.CandyMachineActuator
+import za.co.riggaroo.iwantcandy.ui.settings.WifiSettingsActivity
 import za.co.riggaroo.iwantcandy.utils.BoardDefaults
 
 
@@ -82,6 +83,14 @@ class CandyActivity : Activity(), CandyContract.CandyView {
         buttonCandy.setOnClickListener { _ ->
             pressSmile()
         }
+        val buttonSettings = findViewById<Button>(R.id.button_settings)
+        buttonSettings.setOnClickListener { _ ->
+            openSettings()
+        }
+    }
+
+    private fun openSettings() {
+        WifiSettingsActivity.start(this)
     }
 
     private fun pressSmile() {

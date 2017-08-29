@@ -11,6 +11,7 @@
     <string name="wifi_name_hint">WiFi Name</string>
     <string name="hint_wifi_password">WiFi Password</string>
     <string name="button_connect_wifi">Connect</string>
+    <string name="settings">Settings</string>
 
     <string-array name="tweet_text">
         <item>#DVTvalue Make an impact - a positive impact to our customers' success, our team &amp; in our communities - #DVTRefresh 📈</item>

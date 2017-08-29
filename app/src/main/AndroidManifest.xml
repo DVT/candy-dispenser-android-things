@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application android:name=".CandyApplication">
         <uses-library android:name="com.google.android.things" />
@@ -30,7 +32,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="za.co.riggaroo.iwantcandy.ui.settings.WifiSettingsActivity" />
+        <activity
+            android:name="za.co.riggaroo.iwantcandy.ui.settings.WifiSettingsActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
