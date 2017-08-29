@@ -8,6 +8,9 @@
     <string name="success_dispensing_candy">Dispensing Candy…</string>
     <string name="tweet_posted_success">Tweet successfully posted!</string>
     <string name="tweet_failed">Tweet failed to post.</string>
+    <string name="wifi_name_hint">WiFi Name</string>
+    <string name="hint_wifi_password">WiFi Password</string>
+    <string name="button_connect_wifi">Connect</string>
 
     <string-array name="tweet_text">
         <item>#DVTvalue Make an impact - a positive impact to our customers' success, our team &amp; in our communities - #DVTRefresh 📈</item>

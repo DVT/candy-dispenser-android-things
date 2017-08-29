@@ -1,4 +1,4 @@
-package za.co.riggaroo.iwantcandy
+package za.co.riggaroo.iwantcandy.ui.components
 
 import android.os.CountDownTimer
 import android.util.Log

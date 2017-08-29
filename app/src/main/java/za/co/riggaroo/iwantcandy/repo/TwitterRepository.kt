@@ -1,4 +1,4 @@
-package za.co.riggaroo.iwantcandy
+package za.co.riggaroo.iwantcandy.repo
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -8,6 +8,8 @@ import com.twitter.sdk.android.core.models.Media
 import com.twitter.sdk.android.core.models.Tweet
 import okhttp3.MediaType
 import okhttp3.RequestBody
+import za.co.riggaroo.iwantcandy.BuildConfig
+import za.co.riggaroo.iwantcandy.utils.FileUtils
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream

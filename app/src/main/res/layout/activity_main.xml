@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
-    tools:context="za.co.riggaroo.iwantcandy.CandyActivity">
+    tools:context="za.co.riggaroo.iwantcandy.ui.main.CandyActivity">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -40,9 +40,9 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_height="0dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="0dp"
                 android:src="@drawable/dvt_icon"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -60,7 +60,7 @@
         android:background="@drawable/jellybean_button"
         android:paddingTop="8dp"
         android:text="@string/smile"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
@@ -70,6 +70,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_activate_candy"
@@ -92,14 +93,17 @@
 
     <TextView
         android:id="@+id/text_view_error"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button_activate_candy"
         app:layout_constraintEnd_toEndOf="@+id/button_activate_candy"
-        app:layout_constraintStart_toStartOf="@+id/button_activate_candy" />
+        app:layout_constraintStart_toStartOf="@+id/button_activate_candy"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 </android.support.constraint.ConstraintLayout>

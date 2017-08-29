@@ -1,4 +1,4 @@
-package za.co.riggaroo.iwantcandy
+package za.co.riggaroo.iwantcandy.ui.main
 
 import android.app.Activity
 import android.content.Context
@@ -16,6 +16,11 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import com.google.android.gms.vision.face.FaceDetector
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
+import za.co.riggaroo.iwantcandy.*
+import za.co.riggaroo.iwantcandy.repo.TwitterRepository
+import za.co.riggaroo.iwantcandy.ui.components.CandyCamera
+import za.co.riggaroo.iwantcandy.ui.components.CandyMachineActuator
+import za.co.riggaroo.iwantcandy.utils.BoardDefaults
 
 
 class CandyActivity : Activity(), CandyContract.CandyView {

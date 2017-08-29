@@ -1,4 +1,4 @@
-package za.co.riggaroo.iwantcandy
+package za.co.riggaroo.iwantcandy.ui.components
 
 /**
  * @author rebeccafranks
@@ -27,7 +27,7 @@ class CandyCamera : AutoCloseable {
         private val mCamera = CandyCamera()
 
         fun getInstance(): CandyCamera {
-            return InstanceHolder.mCamera
+            return mCamera
         }
     }
 

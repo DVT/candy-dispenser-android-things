@@ -15,7 +15,7 @@
 
 
         <activity
-            android:name=".CandyActivity"
+            android:name=".ui.main.CandyActivity"
 
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -30,6 +30,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name="za.co.riggaroo.iwantcandy.ui.settings.WifiSettingsActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package za.co.riggaroo.iwantcandy
+package za.co.riggaroo.iwantcandy.ui.main
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -8,6 +8,8 @@ import android.util.SparseArray
 import com.google.android.gms.vision.Frame
 import com.google.android.gms.vision.face.Face
 import com.google.android.gms.vision.face.FaceDetector
+import za.co.riggaroo.iwantcandy.repo.TwitterRepository
+import za.co.riggaroo.iwantcandy.utils.overlay
 
 /**
  * @author rebeccafranks
