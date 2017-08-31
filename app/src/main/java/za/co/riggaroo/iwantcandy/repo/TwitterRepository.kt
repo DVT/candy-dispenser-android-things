@@ -20,9 +20,11 @@ import java.util.*
  * @author rebeccafranks
  * @since 2017/08/18.
  */
-class TwitterRepository(private val dependencyProvider: DependencyProvider, private val context: Context, private val tweetTextOptions: Array<String>) {
+class TwitterRepository(private val dependencyProvider: DependencyProvider, private val context: Context,
+                        private val tweetTextOptions: Array<String>, private val tweetEmojiOptions: Array<String>) {
 
     private val TAG: String? = "TwitterRepo"
+    private val randomGenerator = Random()
 
     fun sendTweet(photo: Bitmap, callback: TweetCallback) {
         val authToken = TwitterAuthToken(BuildConfig.TWITTER_API_TOKEN, BuildConfig.TWITTER_API_SECRET)
@@ -45,8 +47,9 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
     }
 
     private fun getRandomTweetText(): String {
-        val randomNumber = Random().nextInt(tweetTextOptions.size)
-        return tweetTextOptions[randomNumber]
+        val randomNumber = randomGenerator.nextInt(tweetTextOptions.size)
+        val anotherRandomNumber = randomGenerator.nextInt(tweetEmojiOptions.size)
+        return tweetTextOptions[randomNumber] + tweetEmojiOptions[anotherRandomNumber]
     }
 
     private fun uploadTweet(session: TwitterSession, text: String, imageUri: File, callback: TweetCallback) {
@@ -76,7 +79,7 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
 
                             override fun failure(exception: TwitterException) {
                                 callback.onError(exception)
-                                Log.e(TAG, "Post Tweet failed", exception)
+                                Log.e(TAG, "Post Tweet failed:" + exception.message, exception)
                             }
                         })
     }

@@ -38,18 +38,18 @@ class CandyPresenter(private var twitterService: TwitterRepository,
         view.showImage(overlayedBitmap)
         faceDetector?.let { faceDetector ->
             if (!faceDetector.isOperational) {
-                view.displayFaceDetectorNotOperational()
+                view.showFaceDetectorNotOperational()
                 return
             }
             val sparseArray = getFaceSparseArray(originalBitmap, faceDetector)
             if (sparseArray.size() == 0) {
-                view.displayNoFacesDetected()
+                view.showNoFacesDetected()
                 return
             }
 
             if (isSomeoneSmiling(sparseArray)) {
                 view.dispenseCandy()
-                view.displayDispensingCandy()
+                view.showDispensingCandy()
                 twitterService.sendTweet(overlayedBitmap, object : TwitterRepository.TweetCallback {
                     override fun onError(exception: Exception) {
                         view.showTweetError(exception)
@@ -61,7 +61,7 @@ class CandyPresenter(private var twitterService: TwitterRepository,
 
                 })
             } else {
-                view.displayNoSmileDetected()
+                view.showNoSmileDetected()
             }
 
         }
@@ -77,7 +77,7 @@ class CandyPresenter(private var twitterService: TwitterRepository,
 
     private fun isSomeoneSmiling(sparseArray: SparseArray<Face>) = (0 until sparseArray.size())
             .map { sparseArray.valueAt(it) }
-            .any { it != null && it.isSmilingProbability > 0.5 }
+            .any { it != null && it.isSmilingProbability > 0.4 }
 
 
     private fun getFaceSparseArray(bitmap: Bitmap, faceDetector: FaceDetector): SparseArray<Face> {

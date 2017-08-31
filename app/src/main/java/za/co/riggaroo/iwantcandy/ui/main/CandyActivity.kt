@@ -2,6 +2,7 @@ package za.co.riggaroo.iwantcandy.ui.main
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.media.ImageReader
@@ -10,17 +11,13 @@ import android.os.Handler
 import android.support.annotation.StringRes
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import com.google.android.gms.vision.face.FaceDetector
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 import za.co.riggaroo.iwantcandy.R
 import za.co.riggaroo.iwantcandy.repo.TwitterRepository
 import za.co.riggaroo.iwantcandy.ui.components.CandyCamera
 import za.co.riggaroo.iwantcandy.ui.components.CandyMachineActuator
-import za.co.riggaroo.iwantcandy.ui.settings.WifiSettingsActivity
 import za.co.riggaroo.iwantcandy.utils.BoardDefaults
 
 
@@ -57,7 +54,8 @@ class CandyActivity : Activity(), CandyContract.CandyView {
         overlayBitmapOptions.inMutable = true
         photoOverlay = BitmapFactory.decodeResource(resources, R.drawable.picture_frame, overlayBitmapOptions)
 
-        candyPresenter = CandyPresenter(TwitterRepository(TwitterRepository.DependencyProvider(), this, resources.getStringArray(R.array.tweet_text)),
+        candyPresenter = CandyPresenter(
+                TwitterRepository(TwitterRepository.DependencyProvider(), this, resources.getStringArray(R.array.tweet_text), resources.getStringArray(R.array.tweet_random_emoji)),
                 faceDetector, this, photoOverlay)
     }
 
@@ -83,14 +81,15 @@ class CandyActivity : Activity(), CandyContract.CandyView {
         buttonCandy.setOnClickListener { _ ->
             pressSmile()
         }
-        val buttonSettings = findViewById<Button>(R.id.button_settings)
+        val buttonSettings = findViewById<ImageButton>(R.id.button_settings)
         buttonSettings.setOnClickListener { _ ->
             openSettings()
         }
     }
 
     private fun openSettings() {
-        WifiSettingsActivity.start(this)
+
+        startActivity(Intent(android.provider.Settings.ACTION_SETTINGS))
     }
 
     private fun pressSmile() {
@@ -128,19 +127,19 @@ class CandyActivity : Activity(), CandyContract.CandyView {
         progressBarLoading.visibility = View.INVISIBLE
     }
 
-    override fun displayNoSmileDetected() {
+    override fun showNoSmileDetected() {
         showErrorMessage(R.string.error_not_smiling)
     }
 
-    override fun displayDispensingCandy() {
+    override fun showDispensingCandy() {
         showErrorMessage(R.string.success_dispensing_candy)
     }
 
-    override fun displayNoFacesDetected() {
+    override fun showNoFacesDetected() {
         showErrorMessage(R.string.error_no_faces_detected)
     }
 
-    override fun displayFaceDetectorNotOperational() {
+    override fun showFaceDetectorNotOperational() {
         showErrorMessage(R.string.error_face_detector_not_operational)
     }
 

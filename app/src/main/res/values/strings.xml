@@ -14,14 +14,48 @@
     <string name="settings">Settings</string>
 
     <string-array name="tweet_text">
-        <item>#DVTvalue Make an impact - a positive impact to our customers' success, our team &amp; in our communities - #DVTRefresh 📈</item>
+        <item>#DVTvalue Make an impact - a positive impact to our customers' success, our team &amp; in our communities - #DVTRefresh</item>
         <item>#DVTvalue Servant leadership -  Leadership at DVT is more coaching, than telling people what to do. #DVTRefresh </item>
-        <item>#DVTvalue Safe to fail – quick to grow and learn. Sometimes we mess up, but we learn fast. We value learning, not failing. #DVTRefresh</item>
-        <item>#DVTvalue Work-life balance - Life is about balance. At DVT we work hard so that we have time for fun. At work and at home. #DVTRefresh 🏖💻</item>
-        <item>#DVTvalue Own it – do it. No one likes to nag. At DVT, when you commit to your team to get stuff done, then you get it done. #DVTRefresh</item>
-        <!--  <item>#DVTvalue Do the right thing. Honesty, respect &amp; integrity towards our colleagues, clients &amp; community, is the right thing to do. #DVTRefresh</item>
-        -->
-        <item>#DVTvalue Simplicity - The art of achieving maximum results with minimum effort. We work hard and like to achieve a lot, quickly. #DVTRefresh 🎓</item>
+        <item>#DVTvalue Safe to fail – quick to grow and learn. Sometimes we mess up, but we learn fast. We value learning. #DVTRefresh</item>
+        <item>#DVTvalue Work-life balance - Life is about balance. At DVT we work hard so that we have time for fun. At work and at home. #DVTRefresh</item>
+       <!-- <item>#DVTvalue Own it – do it. No one likes to nag. At DVT, when you commit to your team to get stuff done, then you get it done. #DVTRefresh</item>
+       --> <item>#DVTvalue Do the right thing. Honesty, respect &amp; integrity towards our colleagues &amp; community, is the right thing to do. #DVTRefresh</item>
+        <item>#DVTvalue Simplicity - The art of achieving maximum results with minimum effort. We work hard and like to achieve a lot, quickly. #DVTRefresh</item>
     </string-array>
 
+    <string-array name="tweet_random_emoji">
+        <item>💻</item>
+        <item>🙂</item>
+        <item>🤓</item>
+        <item>😀</item>
+        <item>😁</item>
+        <item>👍</item>
+        <item>🌇</item>
+        <item>⌚️</item>
+        <item>📱</item>
+        <item>📞</item>
+        <item>✉️</item>
+        <item>📆</item>
+        <item>✏️</item>
+        <item>🔍</item>
+        <item>😎</item>
+        <item>😃</item>
+        <item>🙃</item>
+        <item>🎓</item>
+        <item>📷</item>
+        <item>📸</item>
+        <item>💡</item>
+        <item>⚖️</item>
+        <item>🗓</item>
+        <item>📚</item>
+        <item>📖</item>
+    </string-array>
+
+    <string name="wifi_disabled">WIFI is switched off. Enable?</string>
+    <string name="enable_wifi">Enable WIFI</string>
+    <string name="exit_app">Exit application</string>
+    <string name="wifi_not_found">Network %s not found.</string>
+    <string name="wifi_not_connected">Could not connect to %s</string>
+    <string name="connecting_to_wifi">Connecting to WiFi: %s</string>
+    <string name="connecting">Connecting...</string>
 </resources>

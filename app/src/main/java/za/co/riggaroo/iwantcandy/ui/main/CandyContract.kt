@@ -10,13 +10,13 @@ import android.graphics.Bitmap
 interface CandyContract {
 
     interface CandyView {
-        fun displayNoSmileDetected()
-        fun displayDispensingCandy()
-        fun displayNoFacesDetected()
+        fun showNoSmileDetected()
+        fun showDispensingCandy()
+        fun showNoFacesDetected()
         fun showLoading()
         fun hideLoading()
         fun clearMessages()
-        fun displayFaceDetectorNotOperational()
+        fun showFaceDetectorNotOperational()
         fun showImage(overlayedBitmap: Bitmap)
         fun dispenseCandy()
         fun triggerCamera()

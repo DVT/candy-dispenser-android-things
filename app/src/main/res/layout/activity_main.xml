@@ -60,7 +60,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/jellybean_button"
-        android:paddingTop="8dp"
+        android:paddingTop="4dp"
         android:text="@string/smile"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -109,14 +109,16 @@
         app:layout_constraintStart_toStartOf="@+id/button_activate_candy"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-    <Button
+    <ImageButton
         android:id="@+id/button_settings"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_marginStart="0dp"
-        android:drawableTop="@drawable/ic_settings"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="2dp"
+        android:background="@null"
+        android:padding="2dp"
+        android:src="@drawable/ic_settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
