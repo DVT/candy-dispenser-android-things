@@ -148,7 +148,7 @@ class CandyActivity : Activity(), CandyContract.CandyView {
     }
 
     override fun dispenseCandy() {
-        candyMachine?.giveCandies()
+        candyMachine?.dispenseCandy()
 
     }
 

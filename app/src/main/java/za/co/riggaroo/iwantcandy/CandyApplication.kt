@@ -17,6 +17,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig
  */
 class CandyApplication : Application() {
 
+    private val DEFAULT_FONT_PATH = "fonts/LifeSavers-Regular.ttf"
+
     override fun onCreate() {
         super.onCreate()
         val config = TwitterConfig.Builder(this)
@@ -25,10 +27,10 @@ class CandyApplication : Application() {
                 .debug(BuildConfig.DEBUG)
                 .build()
         Twitter.initialize(config)
-        Fabric.with(this,  Crashlytics())
+        Fabric.with(this, Crashlytics())
 
         CalligraphyConfig.initDefault(CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/LifeSavers-Regular.ttf")
+                .setDefaultFontPath(DEFAULT_FONT_PATH)
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         )

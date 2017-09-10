@@ -36,8 +36,8 @@ class CandyMachineActuator(gpio: String) : AutoCloseable {
         candyGpioPin?.setActiveType(Gpio.ACTIVE_HIGH)
     }
 
-    fun giveCandies() {
-        Log.d(TAG, "giveCandies")
+    fun dispenseCandy() {
+        Log.d(TAG, "Dispensing candy..")
         candyGpioPin?.value = true
 
         mCandiesTimer?.cancel()

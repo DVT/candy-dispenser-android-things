@@ -25,13 +25,15 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
 
     private val TAG: String? = "TwitterRepo"
     private val randomGenerator = Random()
+    private val PHOTO_FILE_NAME_PREFIX = "smile_"
+    private val PHOTO_FILE_TYPE = ".jpg"
 
     fun sendTweet(photo: Bitmap, callback: TweetCallback) {
         val authToken = TwitterAuthToken(BuildConfig.TWITTER_API_TOKEN, BuildConfig.TWITTER_API_SECRET)
         val twitterSession = TwitterSession(authToken, BuildConfig.TWITTER_USER_ID, BuildConfig.TWITTER_USERNAME)
 
 
-        val file = File(context.cacheDir, "smile_" + System.currentTimeMillis() + ".jpg")
+        val file = File(context.cacheDir, PHOTO_FILE_NAME_PREFIX + System.currentTimeMillis() + PHOTO_FILE_TYPE)
         file.createNewFile()
 
         val bos = ByteArrayOutputStream()
