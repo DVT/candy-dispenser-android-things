@@ -29,11 +29,9 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
     private val PHOTO_FILE_TYPE = ".jpg"
 
     fun sendTweet(photo: Bitmap, callback: TweetCallback) {
-        val authToken = TwitterAuthToken(BuildConfig.TWITTER_API_TOKEN, BuildConfig.TWITTER_API_SECRET)
-        val twitterSession = TwitterSession(authToken, BuildConfig.TWITTER_USER_ID, BuildConfig.TWITTER_USERNAME)
 
-
-        val file = File(context.cacheDir, PHOTO_FILE_NAME_PREFIX + System.currentTimeMillis() + PHOTO_FILE_TYPE)
+        val fileName = PHOTO_FILE_NAME_PREFIX + System.currentTimeMillis() + PHOTO_FILE_TYPE
+        val file = File(context.cacheDir, fileName)
         file.createNewFile()
 
         val bos = ByteArrayOutputStream()
@@ -44,7 +42,9 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
         fos.write(bitmapdata)
         fos.flush()
         fos.close()
-        uploadTweet(twitterSession, getRandomTweetText(), file, callback)
+
+        // Schedule job
+        TweetJob.scheduleTweetSendingJob(getRandomTweetText(), fileName)
 
     }
 
@@ -54,7 +54,7 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
         return tweetTextOptions[randomNumber] + tweetEmojiOptions[anotherRandomNumber]
     }
 
-    private fun uploadTweet(session: TwitterSession, text: String, imageUri: File, callback: TweetCallback) {
+     fun uploadTweet(session: TwitterSession, text: String, imageUri: File, callback: TweetCallback) {
 
         uploadMedia(session, imageUri, object : Callback<Media>() {
             override fun success(result: Result<Media>) {
@@ -81,6 +81,7 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
 
                             override fun failure(exception: TwitterException) {
                                 callback.onError(exception)
+
                                 Log.e(TAG, "Post Tweet failed:" + exception.message, exception)
                             }
                         })

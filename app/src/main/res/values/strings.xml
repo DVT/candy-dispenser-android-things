@@ -14,13 +14,13 @@
     <string name="settings">Settings</string>
 
     <string-array name="tweet_text">
-        <item>#DVTvalue Make an impact - a positive impact to our customers' success, our team &amp; in our communities - #DVTRefresh</item>
-        <item>#DVTvalue Servant leadership -  Leadership at DVT is more coaching, than telling people what to do. #DVTRefresh </item>
-        <item>#DVTvalue Safe to fail – quick to grow and learn. Sometimes we mess up, but we learn fast. We value learning. #DVTRefresh</item>
-        <item>#DVTvalue Work-life balance - Life is about balance. At DVT we work hard so that we have time for fun. At work and at home. #DVTRefresh</item>
-        <item>#DVTvalue Own it – do it. We stick to our word. At DVT, when you commit to your team to get stuff done, then you get it done. #DVTRefresh</item>
-        <item>#DVTvalue Do the right thing. Honesty, respect &amp; integrity towards our colleagues &amp; community, is the right thing to do. #DVTRefresh</item>
-        <item>#DVTvalue Simplicity - The art of achieving maximum results with minimum effort. We work hard and like to achieve a lot, quickly. #DVTRefresh</item>
+        <item>Make an impact - a positive impact to our customers' success, our team &amp; in our communities - #DVTRefresh @DVT_Corporate</item>
+        <item>Servant leadership -  Leadership at DVT is more coaching, than telling people what to do. #DVTRefresh @DVT_Corporate</item>
+        <item>Safe to fail – quick to grow and learn. Sometimes we mess up, but we learn fast. We value learning. #DVTRefresh @DVT_Corporate</item>
+        <item>Work-life balance - Life is about balance. At DVT we work hard so that we have time for fun. #DVTRefresh @DVT_Corporate</item>
+        <item>Own it – do it. We stick to our word and get work done. #DVTRefresh @DVT_Corporate</item>
+        <item>Do the right thing. Honesty, respect &amp; integrity towards our colleagues is the right thing to do. #DVTRefresh @DVT_Corporate</item>
+        <item>Simplicity - The art of achieving maximum results with minimum effort. We work hard and like to achieve a lot. #DVTRefresh @DVT_Corporate</item>
     </string-array>
 
     <string-array name="tweet_random_emoji">
