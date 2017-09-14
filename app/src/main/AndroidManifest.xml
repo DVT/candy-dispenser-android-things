@@ -6,16 +6,21 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application android:name=".CandyApplication">
-        <uses-library android:name="com.google.android.things" />
+        <uses-library
+            android:name="com.google.android.things"
+            android:required="false" />
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="face" />
 
 
         <activity
-            android:name=".CandyActivity"
+            android:name=".ui.main.CandyActivity"
 
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -30,6 +35,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="b99fd2473dbdb153c6cfc6d084eb9a0a44f2be27" />
     </application>
 
 </manifest>

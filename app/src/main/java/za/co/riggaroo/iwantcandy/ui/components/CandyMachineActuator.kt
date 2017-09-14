@@ -1,4 +1,4 @@
-package za.co.riggaroo.iwantcandy
+package za.co.riggaroo.iwantcandy.ui.components
 
 import android.os.CountDownTimer
 import android.util.Log
@@ -13,7 +13,7 @@ import com.google.android.things.pio.PeripheralManagerService
 class CandyMachineActuator(gpio: String) : AutoCloseable {
 
     private val TAG: String? = "CandyMachineActuator"
-    private val CANDY_DISPENSING_DURATION_MILLIS = 2000L
+    private val CANDY_DISPENSING_DURATION_MILLIS = 5000L
     private var candyGpioPin: Gpio? = null
     private var mCandiesTimer: CountDownTimer? = null
 
@@ -36,8 +36,8 @@ class CandyMachineActuator(gpio: String) : AutoCloseable {
         candyGpioPin?.setActiveType(Gpio.ACTIVE_HIGH)
     }
 
-    fun giveCandies() {
-        Log.d(TAG, "giveCandies")
+    fun dispenseCandy() {
+        Log.d(TAG, "Dispensing candy..")
         candyGpioPin?.value = true
 
         mCandiesTimer?.cancel()

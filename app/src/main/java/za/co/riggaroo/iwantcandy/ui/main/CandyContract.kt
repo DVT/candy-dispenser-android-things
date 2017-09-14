@@ -1,4 +1,4 @@
-package za.co.riggaroo.iwantcandy
+package za.co.riggaroo.iwantcandy.ui.main
 
 import android.graphics.Bitmap
 
@@ -10,13 +10,13 @@ import android.graphics.Bitmap
 interface CandyContract {
 
     interface CandyView {
-        fun displayNoSmileDetected()
-        fun displayDispensingCandy()
-        fun displayNoFacesDetected()
         fun showLoading()
         fun hideLoading()
+        fun showNoSmileDetected()
+        fun showDispensingCandy()
+        fun showNoFacesDetected()
         fun clearMessages()
-        fun displayFaceDetectorNotOperational()
+        fun showFaceDetectorNotOperational()
         fun showImage(overlayedBitmap: Bitmap)
         fun dispenseCandy()
         fun triggerCamera()

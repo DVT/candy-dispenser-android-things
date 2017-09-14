@@ -1,4 +1,4 @@
-package za.co.riggaroo.iwantcandy
+package za.co.riggaroo.iwantcandy.utils
 
 import android.graphics.Bitmap
 import android.graphics.Canvas

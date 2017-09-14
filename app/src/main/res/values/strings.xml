@@ -1,20 +1,61 @@
 <resources>
     <string name="app_name">I want Candy</string>
-    <string name="smile">SMILE</string>
-    <string name="instructions">Take a silly photo, Get Candy. #TheCandyBot</string>
+    <string name="smile">TAKE PHOTO</string>
+    <string name="instructions">SMILE, Get Candy. #DVTRefresh</string>
     <string name="error_not_smiling">You aren\'t smiling!</string>
     <string name="error_no_faces_detected">No faces detected</string>
     <string name="error_face_detector_not_operational">Face detector not operational. Please wait while it downloads (it could take a while)</string>
     <string name="success_dispensing_candy">Dispensing Candy…</string>
     <string name="tweet_posted_success">Tweet successfully posted!</string>
     <string name="tweet_failed">Tweet failed to post.</string>
+    <string name="wifi_name_hint">WiFi Name</string>
+    <string name="hint_wifi_password">WiFi Password</string>
+    <string name="button_connect_wifi">Connect</string>
+    <string name="settings">Settings</string>
 
     <string-array name="tweet_text">
-        <item>I just got some candy from #TheCandyBot</item>
-        <item>I smiled for 4 pieces of candy #OhWow #TheCandyBot</item>
-        <item>Did someone say candy? #TheCandyBot</item>
-        <item>Smiling for Candy #TheCandyBot</item>
-        <item>Sugar Rush - free candy #TheCandyBot</item>
+        <item>Make an impact - a positive impact to our customers' success, our team &amp; in our communities - #DVTRefresh @DVT_Corporate</item>
+        <item>Servant leadership -  Leadership at DVT is more coaching, than telling people what to do. #DVTRefresh @DVT_Corporate</item>
+        <item>Safe to fail – quick to grow and learn. Sometimes we mess up, but we learn fast. We value learning. #DVTRefresh @DVT_Corporate</item>
+        <item>Work-life balance - Life is about balance. At DVT we work hard so that we have time for fun. #DVTRefresh @DVT_Corporate</item>
+        <item>Own it – do it. We stick to our word and get work done. #DVTRefresh @DVT_Corporate</item>
+        <item>Do the right thing. Honesty, respect &amp; integrity towards our colleagues is the right thing to do. #DVTRefresh @DVT_Corporate</item>
+        <item>Simplicity - The art of achieving maximum results with minimum effort. We work hard and like to achieve a lot. #DVTRefresh @DVT_Corporate</item>
     </string-array>
 
+    <string-array name="tweet_random_emoji">
+        <item>💻</item>
+        <item>🙂</item>
+        <item>🤓</item>
+        <item>😀</item>
+        <item>😁</item>
+        <item>👍</item>
+        <item>🌇</item>
+        <item>⌚️</item>
+        <item>📱</item>
+        <item>📞</item>
+        <item>✉️</item>
+        <item>📆</item>
+        <item>✏️</item>
+        <item>🔍</item>
+        <item>😎</item>
+        <item>😃</item>
+        <item>🙃</item>
+        <item>🎓</item>
+        <item>📷</item>
+        <item>📸</item>
+        <item>💡</item>
+        <item>⚖️</item>
+        <item>🗓</item>
+        <item>📚</item>
+        <item>📖</item>
+    </string-array>
+
+    <string name="wifi_disabled">WIFI is switched off. Enable?</string>
+    <string name="enable_wifi">Enable WIFI</string>
+    <string name="exit_app">Exit application</string>
+    <string name="wifi_not_found">Network %s not found.</string>
+    <string name="wifi_not_connected">Could not connect to %s</string>
+    <string name="connecting_to_wifi">Connecting to WiFi: %s</string>
+    <string name="connecting">Connecting...</string>
 </resources>

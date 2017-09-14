@@ -1,4 +1,4 @@
-package za.co.riggaroo.iwantcandy
+package za.co.riggaroo.iwantcandy.repo
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -8,6 +8,8 @@ import com.twitter.sdk.android.core.models.Media
 import com.twitter.sdk.android.core.models.Tweet
 import okhttp3.MediaType
 import okhttp3.RequestBody
+import za.co.riggaroo.iwantcandy.BuildConfig
+import za.co.riggaroo.iwantcandy.utils.FileUtils
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -18,16 +20,18 @@ import java.util.*
  * @author rebeccafranks
  * @since 2017/08/18.
  */
-class TwitterRepository(private val dependencyProvider: DependencyProvider, private val context: Context, private val tweetTextOptions: Array<String>) {
+class TwitterRepository(private val dependencyProvider: DependencyProvider, private val context: Context,
+                        private val tweetTextOptions: Array<String>, private val tweetEmojiOptions: Array<String>) {
 
     private val TAG: String? = "TwitterRepo"
+    private val randomGenerator = Random()
+    private val PHOTO_FILE_NAME_PREFIX = "smile_"
+    private val PHOTO_FILE_TYPE = ".jpg"
 
     fun sendTweet(photo: Bitmap, callback: TweetCallback) {
-        val authToken = TwitterAuthToken(BuildConfig.TWITTER_API_TOKEN, BuildConfig.TWITTER_API_SECRET)
-        val twitterSession = TwitterSession(authToken, BuildConfig.TWITTER_USER_ID, BuildConfig.TWITTER_USERNAME)
 
-
-        val file = File(context.cacheDir, "smile_" + System.currentTimeMillis() + ".jpg")
+        val fileName = PHOTO_FILE_NAME_PREFIX + System.currentTimeMillis() + PHOTO_FILE_TYPE
+        val file = File(context.cacheDir, fileName)
         file.createNewFile()
 
         val bos = ByteArrayOutputStream()
@@ -38,16 +42,19 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
         fos.write(bitmapdata)
         fos.flush()
         fos.close()
-        uploadTweet(twitterSession, getRandomTweetText(), file, callback)
+
+        // Schedule job
+        TweetJob.scheduleTweetSendingJob(getRandomTweetText(), fileName)
 
     }
 
     private fun getRandomTweetText(): String {
-        val randomNumber = Random().nextInt(tweetTextOptions.size)
-        return tweetTextOptions[randomNumber]
+        val randomNumber = randomGenerator.nextInt(tweetTextOptions.size)
+        val anotherRandomNumber = randomGenerator.nextInt(tweetEmojiOptions.size)
+        return tweetTextOptions[randomNumber] + tweetEmojiOptions[anotherRandomNumber]
     }
 
-    private fun uploadTweet(session: TwitterSession, text: String, imageUri: File, callback: TweetCallback) {
+     fun uploadTweet(session: TwitterSession, text: String, imageUri: File, callback: TweetCallback) {
 
         uploadMedia(session, imageUri, object : Callback<Media>() {
             override fun success(result: Result<Media>) {
@@ -74,7 +81,8 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
 
                             override fun failure(exception: TwitterException) {
                                 callback.onError(exception)
-                                Log.e(TAG, "Post Tweet failed", exception)
+
+                                Log.e(TAG, "Post Tweet failed:" + exception.message, exception)
                             }
                         })
     }

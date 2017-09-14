@@ -1,4 +1,4 @@
-package za.co.riggaroo.iwantcandy
+package za.co.riggaroo.iwantcandy.ui.main
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -8,6 +8,9 @@ import android.util.SparseArray
 import com.google.android.gms.vision.Frame
 import com.google.android.gms.vision.face.Face
 import com.google.android.gms.vision.face.FaceDetector
+import timber.log.Timber
+import za.co.riggaroo.iwantcandy.repo.TwitterRepository
+import za.co.riggaroo.iwantcandy.utils.overlay
 
 /**
  * @author rebeccafranks
@@ -28,27 +31,27 @@ class CandyPresenter(private var twitterService: TwitterRepository,
     }
 
     override fun onPictureTaken(imageBytes: ByteArray) {
-        Log.d(TAG, "Picture Taken with " + imageBytes.size)
+        Timber.d( "Picture Taken with " + imageBytes.size)
 
         val originalBitmap = getBitmapFromByteArray(imageBytes)
-        val overlayedBitmap = originalBitmap.overlay(photoOverlay)
+        val overlayBitmap = originalBitmap.overlay(photoOverlay)
 
-        view.showImage(overlayedBitmap)
+        view.showImage(overlayBitmap)
         faceDetector?.let { faceDetector ->
             if (!faceDetector.isOperational) {
-                view.displayFaceDetectorNotOperational()
+                view.showFaceDetectorNotOperational()
                 return
             }
-            val sparseArray = getFaceSparseArray(originalBitmap, faceDetector)
-            if (sparseArray.size() == 0) {
-                view.displayNoFacesDetected()
+            val sparseArray = getFaceSparseArray(originalBitmap)
+            if (sparseArray == null || sparseArray.size() == 0) {
+                view.showNoFacesDetected()
                 return
             }
 
             if (isSomeoneSmiling(sparseArray)) {
                 view.dispenseCandy()
-                view.displayDispensingCandy()
-                twitterService.sendTweet(overlayedBitmap, object : TwitterRepository.TweetCallback {
+                view.showDispensingCandy()
+                twitterService.sendTweet(overlayBitmap, object : TwitterRepository.TweetCallback {
                     override fun onError(exception: Exception) {
                         view.showTweetError(exception)
                     }
@@ -59,7 +62,7 @@ class CandyPresenter(private var twitterService: TwitterRepository,
 
                 })
             } else {
-                view.displayNoSmileDetected()
+                view.showNoSmileDetected()
             }
 
         }
@@ -75,11 +78,12 @@ class CandyPresenter(private var twitterService: TwitterRepository,
 
     private fun isSomeoneSmiling(sparseArray: SparseArray<Face>) = (0 until sparseArray.size())
             .map { sparseArray.valueAt(it) }
-            .any { it != null && it.isSmilingProbability > 0.5 }
+            .any { it != null && it.isSmilingProbability > 0.4 }
 
 
-    private fun getFaceSparseArray(bitmap: Bitmap, faceDetector: FaceDetector): SparseArray<Face> {
+    private fun getFaceSparseArray(bitmap: Bitmap): SparseArray<Face>? {
         val frame = Frame.Builder().setBitmap(bitmap).build()
-        return faceDetector.detect(frame)
+        return faceDetector?.detect(frame)
     }
+
 }

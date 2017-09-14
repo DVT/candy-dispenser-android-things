@@ -1,4 +1,4 @@
-package za.co.riggaroo.iwantcandy
+package za.co.riggaroo.iwantcandy.ui.components
 
 /**
  * @author rebeccafranks
@@ -27,7 +27,7 @@ class CandyCamera : AutoCloseable {
         private val mCamera = CandyCamera()
 
         fun getInstance(): CandyCamera {
-            return InstanceHolder.mCamera
+            return mCamera
         }
     }
 
@@ -37,7 +37,7 @@ class CandyCamera : AutoCloseable {
         try {
             camIds = manager.cameraIdList
         } catch (e: CameraAccessException) {
-            Log.d(TAG, "Cam access exception gettings ids", e)
+            Log.d(TAG, "Cam access exception getting ids", e)
         }
         if (camIds.isEmpty()) {
             Log.d(TAG, "No cameras found")
