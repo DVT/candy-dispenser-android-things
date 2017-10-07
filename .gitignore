@@ -27,3 +27,5 @@ app/release/app-release.apk
 app/release/output.json
 
 app/fabric.properties
+
+app/google-services.json

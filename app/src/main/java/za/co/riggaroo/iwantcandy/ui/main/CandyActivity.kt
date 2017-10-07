@@ -55,7 +55,7 @@ class CandyActivity : Activity(), CandyContract.CandyView {
         photoOverlay = BitmapFactory.decodeResource(resources, R.drawable.picture_frame, overlayBitmapOptions)
 
         candyPresenter = CandyPresenter(
-                TwitterRepository(TwitterRepository.DependencyProvider(), this, resources.getStringArray(R.array.tweet_text), resources.getStringArray(R.array.tweet_random_emoji)),
+                TwitterRepository(TwitterRepository.DependencyProvider(), this, resources.getStringArray(R.array.tweet_random_emoji)),
                 faceDetector, this, photoOverlay)
     }
 

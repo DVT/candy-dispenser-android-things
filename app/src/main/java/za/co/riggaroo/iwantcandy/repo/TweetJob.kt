@@ -77,7 +77,6 @@ class TweetJob(private val twitterRepository: TwitterRepository) : Job() {
             extras.putString(PHOTO_LOCATION, photoLocation)
             JobRequest.Builder(JOB_TAG)
                     .setExecutionWindow(30_000L, 40_000L)
-
                     .setBackoffCriteria(30_000L, JobRequest.BackoffPolicy.EXPONENTIAL)
                     .setRequiredNetworkType(JobRequest.NetworkType.CONNECTED)
                     .setPersisted(true)

@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import com.crashlytics.android.Crashlytics
 import com.evernote.android.job.JobManager
+import com.google.firebase.database.FirebaseDatabase
 import com.twitter.sdk.android.core.DefaultLogger
 import com.twitter.sdk.android.core.Twitter
 import com.twitter.sdk.android.core.TwitterAuthConfig
@@ -31,6 +32,7 @@ class CandyApplication : Application() {
                 .build()
         Twitter.initialize(config)
         Fabric.with(this, Crashlytics())
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true)
 
         CalligraphyConfig.initDefault(CalligraphyConfig.Builder()
                 .setDefaultFontPath(DEFAULT_FONT_PATH)
@@ -40,7 +42,6 @@ class CandyApplication : Application() {
 
         JobManager.create(this).addJobCreator(TweetJobCreator(TwitterRepository(TwitterRepository.DependencyProvider(),
                 this,
-                resources.getStringArray(R.array.tweet_text),
                 resources.getStringArray(R.array.tweet_random_emoji))))
     }
 }

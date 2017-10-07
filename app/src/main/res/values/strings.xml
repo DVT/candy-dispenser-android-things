@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">I want Candy</string>
     <string name="smile">TAKE PHOTO</string>
-    <string name="instructions">SMILE, Get Candy. #DVTRefresh</string>
+    <string name="instructions">SMILE, Get Candy.</string>
     <string name="error_not_smiling">You aren\'t smiling!</string>
     <string name="error_no_faces_detected">No faces detected</string>
     <string name="error_face_detector_not_operational">Face detector not operational. Please wait while it downloads (it could take a while)</string>

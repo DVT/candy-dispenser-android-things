@@ -3,12 +3,15 @@ package za.co.riggaroo.iwantcandy.repo
 import android.content.Context
 import android.graphics.Bitmap
 import android.util.Log
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.twitter.sdk.android.core.*
 import com.twitter.sdk.android.core.models.Media
 import com.twitter.sdk.android.core.models.Tweet
 import okhttp3.MediaType
 import okhttp3.RequestBody
-import za.co.riggaroo.iwantcandy.BuildConfig
 import za.co.riggaroo.iwantcandy.utils.FileUtils
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -21,12 +24,32 @@ import java.util.*
  * @since 2017/08/18.
  */
 class TwitterRepository(private val dependencyProvider: DependencyProvider, private val context: Context,
-                        private val tweetTextOptions: Array<String>, private val tweetEmojiOptions: Array<String>) {
+                        private val tweetEmojiOptions: Array<String>) {
 
     private val TAG: String? = "TwitterRepo"
     private val randomGenerator = Random()
     private val PHOTO_FILE_NAME_PREFIX = "smile_"
     private val PHOTO_FILE_TYPE = ".jpg"
+    private var config = CandyBotConfig("/default_overlay.png")
+
+    init {
+        FirebaseDatabase.getInstance().getReference("candy_bot_1").addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(databaseError: DatabaseError?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                dataSnapshot?.let {
+                    val newConfig = dataSnapshot.getValue(CandyBotConfig::class.java)
+                    Log.d(TAG, "Assigning new config:" + newConfig)
+                    if (newConfig != null) {
+                        config = newConfig
+                    }
+                }
+            }
+
+        })
+    }
 
     fun sendTweet(photo: Bitmap, callback: TweetCallback) {
 
@@ -49,12 +72,12 @@ class TwitterRepository(private val dependencyProvider: DependencyProvider, priv
     }
 
     private fun getRandomTweetText(): String {
-        val randomNumber = randomGenerator.nextInt(tweetTextOptions.size)
+        val randomNumber = randomGenerator.nextInt(config.tweetTextOptions.size)
         val anotherRandomNumber = randomGenerator.nextInt(tweetEmojiOptions.size)
-        return tweetTextOptions[randomNumber] + tweetEmojiOptions[anotherRandomNumber]
+        return config.tweetTextOptions[randomNumber] + tweetEmojiOptions[anotherRandomNumber]
     }
 
-     fun uploadTweet(session: TwitterSession, text: String, imageUri: File, callback: TweetCallback) {
+    fun uploadTweet(session: TwitterSession, text: String, imageUri: File, callback: TweetCallback) {
 
         uploadMedia(session, imageUri, object : Callback<Media>() {
             override fun success(result: Result<Media>) {
